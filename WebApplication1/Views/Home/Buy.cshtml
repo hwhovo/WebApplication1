@@ -1,0 +1,114 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Покупка</title>
+</head>
+<body>
+    <div>
+        <h3>Форма оформления покупки</h3>
+        <p>Html.BeginForm</p>
+
+        @using (Html.BeginForm("Buy", "Home", FormMethod.Post))   //<!--<form method="post" action="">-->
+        {
+           @Html.Hidden("BookId", ViewBag.BookId as string) <!--<input type="hidden" value="//ViewBag.BookId" name="BookId" />--> 
+            <table>
+                <tr>
+    <td>
+        <p>Html.Label</p>
+
+    @Html.Label("Person")               <!--<p>Введите свое имя </p>-->
+    </td>
+   <td> 
+       <p>Html.TextBox</p>
+
+    @Html.TextBox("Person")<!--<input type="text" name="Person" />-->
+    </td>
+            </tr>
+                <tr>
+                    <td>
+                        <p>Html.Label</p>
+
+                        @Html.Label("Address")<!--<p>Введите адрес :</p>-->                    
+                    </td>
+                    <td>
+                        <p>Html.TextBox</p>
+                        @Html.TextBox("Address")<!--<input type="text" name="Address" />-->
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Html.ListBox - MultiSelectlist</p>
+                        @Html.ListBox("countires", new MultiSelectList(new string[] { "Россия", "США", "Китай", "Индия", "Html.ListBox" }))
+                    </td>
+                    <td>
+                        <p>Html.DropDownList - SelectList</p>
+
+                        @Html.DropDownList("Author", ViewBag.Books as SelectList)
+                        </td>
+                    </tr>
+                <tr>
+                <td><p>App_Code MyHtml.cshtml html helper</p>
+                    @MyHelpers.HtmlList(new string[] { "Лондон", "Париж", "Берлин" })
+                    </td></tr>
+
+               <tr> <td><p>C# class helper</p>
+                    @{
+                        string[] cities = new string[] { "Лондон", "Париж", "Москва" };
+                    }
+                    @{
+                        string[] countries = new string[] { "Великобритания", "Франция", "Россия" };
+                    }
+                    @using BookStore.Helpers
+                    <h3>Города</h3>
+                   <p>add attributes class and id</p>
+                    @Html.CreateList(cities, new { @class = "btn", id = "citiesList" }) 
+                    <br />
+                   <p>or this syntax</p>
+
+                    <h3>Страны</h3>
+                   @ListHelper.CreateList(Html, countries)
+                
+                </td>
+                </tr>
+              <tr><td>
+                  <p>using c# image helper</p>
+                      @using BookStore.Helpers
+
+                      @Html.Image("/Content/cats1.jpg", "спящий котэ")
+                  </td></tr>
+                <tr><td>
+                    <input type="submit" value="Отправить" /> 
+                    </td></tr>
+            </table>
+        }
+    </div>
+    @model WebApplication1.Models.Purchase
+
+
+    <p>strong typing form with lyambda expressions</p>
+    <div>
+        <h3>Форма оформления покупки</h3>
+        @using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.BookId)
+            @Html.LabelFor(m => m.Person, "Введите свое имя")
+            <br />
+            @Html.TextBoxFor(m => m.Person)
+            <br /><br />
+            @Html.LabelFor(m => m.Address, "Введите адрес")
+            <br />
+            @Html.TextBoxFor(m => m.Address)
+            <p><input type="submit" value="Отправить" /></p>
+        }
+    </div>
+ 
+</body>
+</html>@section Footer {
+    <p>custom footer</p>
+    Все права защищены. Syte Corp. 2012.
+}

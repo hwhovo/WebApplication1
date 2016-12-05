@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Result Types</title>
+</head>
+<body>
+    <div> 
+        <ul>
+            <li>@Html.ActionLink("FileResult - Download File!", "fileResult")</li>
+            <li>@Html.ActionLink("FileContentResult - Download byte array!", "fileContentResult")</li>
+            <li>@Html.ActionLink("FilePathResult - Download File by path!", "filePathResult")</li>
+            <li>@Html.ActionLink("FileStreamResult - Download Binar Stream!", "fileStreamResult")</li>
+            <li>@Html.ActionLink("HttpStatusCodeResult - Return HTML Code!", "httpStatusCodeResult")</li>
+            <li>@Html.ActionLink("HttpUnauthorizedResult - Return HTTP 401!", "httpUnauthorizedResult")</li>
+            <li>@Html.ActionLink("HttpNotFoundResult - Return HTTP 401!", "httpNotFoundResult")</li>
+            <li>@Html.ActionLink("JavaScriptResult - Return JS Code!", "javaScriptResult")</li>
+            <li>@Html.ActionLink("JsonResult - Return Json Object or Objects!", "jsonResult")</li>
+            <li>@Html.ActionLink("PartialViewResult - Return Partial View!", "partialViewResult")</li>
+            <li>@Html.ActionLink("RedirectResult - Return Redirect to status code 301 or 302!", "redirectResult")</li>
+            <li>@Html.ActionLink("RedirectToRouteResult - Return Redirect to inputed URL!", "redirectToRouteResult")</li>
+            <li>@Html.ActionLink("ViewResult - Return HTML Page!", "Index")</li>
+            <li>@Html.ActionLink("EmptyResult - Returns nothing!", "emptyResult")</li>
+
+        </ul>
+    </div>
+</body>
+</html>
