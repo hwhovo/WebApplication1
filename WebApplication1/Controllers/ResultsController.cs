@@ -9,39 +9,34 @@ namespace BookStore.Controllers
 {
     public class ResultsController : Controller
     {
-        public readonly string fileName = AppDomain.CurrentDomain.BaseDirectory + "/App_Data/DownloadFile.bin";
+        ResultsController()
+        {
+            filePath = Server.MapPath("~/Files/DownloadFile.bin");
+        }
+        public readonly string filePath;//AppDomain.CurrentDomain.BaseDirectory + "/App_Data/DownloadFile.bin";
         public ViewResult Index()
         {
             return View();
         }
         public FileResult fileResult()
         {
-            return File(fileName, "application/octet-stream");
+            return File(filePath, "application/octet-stream");
         }
 
         public FileContentResult fileContentResult()
         {
-            using (FileStream sr = new FileStream(fileName, FileMode.OpenOrCreate))
-            {
-                BinaryReader reader = new BinaryReader(sr);
-                
-                    byte[] fileContent = reader.ReadBytes(10);
-
-                    return File(fileContent, "application/octet-stream", "DownloadFile.bin");
-                
-            }
+            byte[] mas = System.IO.File.ReadAllBytes(filePath);
+            return File(mas, "application/octet-stream", "DownloadFile.bin");
         }
         public FilePathResult filePathResult()
         {
-            return File(fileName, "application/octet-stream");
+            return File(filePath, "application/octet-stream");
         }
         public FileStreamResult fileStreamResult()
         {
+            FileStream sr = new FileStream(filePath, FileMode.OpenOrCreate);
 
-            FileStream sr = new FileStream(fileName, FileMode.OpenOrCreate);
-            
-                return File(sr, "text/plain");
-            
+            return File(sr, "text/plain");
         }
         public HttpStatusCodeResult httpStatusCodeResult()
         {

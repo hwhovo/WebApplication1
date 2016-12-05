@@ -220,7 +220,7 @@
     <Content Include="App_Data\SoccerInfo_log.ldf">
       <DependentUpon>SoccerInfo.mdf</DependentUpon>
     </Content>
-    <None Include="App_Data\DownloadFile.bin" />
+    <None Include="Files\DownloadFile.bin" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cats1.jpg" />
@@ -310,9 +310,7 @@
     <Content Include="Views\Results\Index.cshtml" />
     <Content Include="Views\Results\partialViewResult.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Other\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
